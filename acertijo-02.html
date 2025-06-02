@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>HARK!</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: 'EB Garamond', serif;
+      text-align: center;
+      padding: 2rem;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 5rem;
+      color: white;
+      margin-bottom: 3rem;
+    }
+
+    .letras {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      font-size: 3rem;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .letras span {
+      padding: 1rem 1.5rem;
+      border: 2px solid white;
+      transition: 0.3s;
+    }
+
+    .letras span:hover {
+      background-color: rgb(30, 255, 0);
+      transform: scale(1.1);
+    }
+
+    .bloqueado {
+      color: red;
+      font-size: 2rem;
+      margin-top: 2rem;
+    }
+
+    #acertijo-boton {
+      display: none;
+      margin-top: 3rem;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      background-color: #0ff;
+      color: black;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 0 10px #0ff9;
+    }
+
+    #acertijo-boton:hover {
+      background-color: #00cccc;
+    }
+
+    .exitoVisual {
+      animation: exitoFlash 1s ease forwards;
+      color: #00ffcc !important;
+      text-shadow: 0 0 15px #0ff, 0 0 30px #0ff;
+    }
+
+    @keyframes exitoFlash {
+      0% {
+        background-color: black;
+        transform: scale(1);
+      }
+      50% {
+        background-color: #003333;
+        transform: scale(1.05);
+      }
+      100% {
+        background-color: black;
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="clave">1115.</h1>
+
+  <div class="letras" id="letras">
+    <span data-index="1">J</span>
+    <span data-index="2">U</span>
+    <span data-index="3">N</span>
+    <span data-index="4">G</span>
+    <span data-index="5">A</span> <!-- ✅ ESTA ES LA CORRECTA -->
+    <span data-index="6">N</span>
+  </div>
+
+  <div id="bloqueado" class="bloqueado" style="display: none;">
+    PATHETHIC. THATS WHAT THOU ART.
+  </div>
+
+  <a id="acertijo-boton" href="luxu-blog03">Beware of mine Legna. Hark! Thy words spoken.</a>
+
+  <!-- AUDIO -->
+  <audio id="audioExito" src="audio/o-fortuna-letter-A.mp3" preload="auto"></audio>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const letras = document.querySelectorAll("#letras span");
+      const mensaje = document.getElementById("bloqueado");
+      const boton = document.getElementById("acertijo-boton");
+      const clave = document.getElementById("clave");
+      const audioExito = document.getElementById("audioExito");
+
+      letras.forEach(letra => {
+        letra.addEventListener("click", () => {
+          const seleccion = letra.getAttribute("data-index");
+
+          if (seleccion === "5") {
+            // ✅ ÉXITO
+            boton.style.display = "inline-block";
+            letras.forEach(l => l.style.pointerEvents = "none");
+            clave.classList.add("exitoVisual");
+
+            try {
+              audioExito.currentTime = 0;
+              audioExito.play().then(() => {
+                console.log("🎶 Sonido de éxito reproducido.");
+              }).catch(e => {
+                console.warn("⚠️ No se pudo reproducir el audio:", e);
+              });
+            } catch (e) {
+              console.warn("⚠️ Audio no compatible o bloqueado:", e);
+            }
+
+          } else {
+            // ❌ FALLO
+            clave.textContent = "Ν⨷";
+            mensaje.style.display = "block";
+            letras.forEach(l => l.style.pointerEvents = "none");
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

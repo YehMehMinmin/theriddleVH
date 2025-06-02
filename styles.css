@@ -1,0 +1,414 @@
+/* 🧠 ESTILO GENERAL */
+body {
+  background-color: #000000;
+  color: #ffffff;
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+/* 🕯️ HEADER */
+header {
+  text-align: center;
+  border-bottom: 1px solid #555;
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+header.corrupto::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(255,0,0,0.05),
+    rgba(0,255,255,0.05) 10px
+  );
+  animation: corruption 2s infinite linear;
+  mix-blend-mode: difference;
+  z-index: 0;
+}
+
+.jungan-symbol {
+  width: 100px;
+  filter: grayscale(100%) contrast(200%) brightness(1.3);
+  animation: flicker 3s infinite alternate;
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+  20%, 22%, 24%, 55% { opacity: 0.1; }
+}
+
+@keyframes corruption {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(5px, -5px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ✝️ TÍTULOS */
+h1, h2 {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+/* 📜 SECCIONES */
+main {
+  max-width: 800px;
+  margin: auto;
+}
+
+section {
+  margin-bottom: 3rem;
+}
+
+.registro, .sagrada, .nota-templo {
+  background-color: #121212;
+  border-left: 3px solid #0ff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 0 8px #0ff3;
+}
+
+.runa-img {
+  width: 150px;
+  margin-top: 1rem;
+  filter: brightness(120%) contrast(140%);
+}
+
+.distorsionado {
+  color: #ccaaaa;
+  text-shadow: 1px 1px red;
+}
+
+/* ⚠️ ADVERTENCIA */
+.advertencia {
+  background-color: #220000;
+  color: #ffaaaa;
+  border: 2px dashed red;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-style: italic;
+  animation: flicker 2s infinite alternate;
+}
+
+/* 🌀 NAVBAR GLITCH */
+.glitch-nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.glitch-nav a {
+  color: #ff6ec7;
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+}
+
+.glitch-btn::after {
+  content: attr(data-glitch);
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  color: red;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.glitch-btn:hover {
+  animation: glitch-text 0.2s steps(2, end) infinite;
+  color: #fff;
+  background: #700;
+}
+
+.btn-legit {
+  color: #0ff;
+  border: 1px solid #0ff;
+  padding: 0.3rem 0.8rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn-legit:hover {
+  background: #0ff;
+  color: #000;
+}
+
+/* 🌀 FINAL GLITCH */
+footer.corrupto-final {
+  animation: corruption 2s infinite alternate;
+  background: #111;
+  color: red;
+  text-shadow: 0 0 3px red;
+}
+
+.destino-final {
+  background-color: #1a0000;
+  padding: 2rem;
+  border: 2px dashed #f00;
+  text-align: center;
+  animation: flicker 2s infinite alternate;
+}
+
+/* 🔁 ANIMACIONES */
+@keyframes glitch-text {
+  0% { transform: translate(0px, 0px); }
+  20% { transform: translate(-1px, 1px); }
+  40% { transform: translate(1px, -1px); }
+  60% { transform: translate(-2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0px, 0px); }
+}
+
+@keyframes flicker {
+  0% { opacity: 1; }
+  50% { opacity: 0.2; }
+  100% { opacity: 1; }
+}
+
+header.corrupto::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(255,0,0,0.05),
+    rgba(0,255,255,0.05) 10px
+  );
+  animation: corruption 2s infinite linear;
+  mix-blend-mode: difference;
+  z-index: 0;
+}
+
+.jungan-symbol {
+  width: 100px;
+  filter: grayscale(100%) contrast(200%) brightness(1.3);
+  animation: flicker 3s infinite alternate;
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+  20%, 22%, 24%, 55% { opacity: 0.1; }
+}
+
+@keyframes corruption {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(5px, -5px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ✝️ TÍTULOS */
+h1, h2 {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+/* 📜 SECCIONES */
+main {
+  max-width: 800px;
+  margin: auto;
+}
+
+section {
+  margin-bottom: 3rem;
+}
+
+.registro, .sagrada, .nota-templo {
+  background-color: #121212;
+  border-left: 3px solid rgb(255, 255, 255);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(182, 164, 105, 0.2);
+}
+
+.runa-img {
+  width: 150px;
+  margin-top: 1rem;
+  filter: brightness(120%) contrast(140%);
+}
+
+.distorsionado {
+  color: #ccaaaa;
+  text-shadow: 1px 1px red;
+}
+
+/* ⚠️ ADVERTENCIA */
+.advertencia {
+  background-color: #220000;
+  color: #ffaaaa;
+  border: 2px dashed rgba(138, 10, 10, 0.541);
+  padding: 1rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-style: italic;
+  animation: flicker 2s infinite alternate;
+}
+
+/* 🌀 NAVBAR GLITCH */
+.glitch-nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.glitch-nav a {
+  color: #ff6ec7;
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+}
+
+.glitch-btn::after {
+  content: attr(data-glitch);
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  color: red;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.glitch-btn:hover {
+  animation: glitch-text 0.2s steps(2, end) infinite;
+  color: #fff;
+  background: rgba(4, 0, 255, 0.993);
+}
+
+.btn-legit {
+  color: rgb(0, 0, 0);
+  border: 1px solid rgb(0, 0, 0);
+  padding: 0.3rem 0.8rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn-legit:hover {
+  background: rgb(0, 0, 0);
+  color: #000;
+}
+
+/* 🌀 FINAL GLITCH */
+footer.corrupto-final {
+  animation: corruption 2s infinite alternate;
+  background: #000000;
+  color: rgb(255, 0, 149);
+  text-shadow: 0 0 3px rgb(68, 0, 255);
+}
+
+.destino-final {
+  background-color: #000000;
+  padding: 2rem;
+  border: 2px dashed rgb(0, 0, 0);
+  text-align: center;
+  animation: flicker 2s infinite alternate;
+}
+
+/* 🔁 ANIMACIONES */
+@keyframes glitch-text {
+  0% { transform: translate(0px, 0px); }
+  20% { transform: translate(-1px, 1px); }
+  40% { transform: translate(1px, -1px); }
+  60% { transform: translate(-2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0px, 0px); }
+}
+
+@keyframes flicker {
+  0% { opacity: 1; }
+  50% { opacity: 0.2; }
+  100% { opacity: 1; }
+}
+
+/* ⚠️ MODO GLITCH FINAL GLOBAL */
+body.glitch-activated {
+  animation: total-chaos 0.2s steps(2, end) infinite;
+  background: #0f0f0f;
+  color: #ff4444;
+  text-shadow: 1px 1px 0 red, -1px -1px 0 blue;
+}
+
+body.glitch-activated * {
+  animation: ultra-glitch 0.3s steps(2, end) infinite;
+}
+
+@keyframes total-chaos {
+  0% { background-color: #ff0000; }
+  50% { background-color: #000000; }
+  100% { background-color: #ff0000; }
+}
+
+@keyframes ultra-glitch {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(-2px, 2px) skewX(-5deg); }
+  50%  { transform: translate(2px, -2px) skewY(5deg); }
+  75%  { transform: translate(-1px, -1px) rotate(0.5deg); }
+  100% { transform: translate(0, 0); }
+}
+
+
+body.glitch-activated .mensaje-glitch {
+  display: block;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #ff4444;
+  text-shadow: 0 0 10px #ff0000;
+  animation: distorsion-texto 0.5s infinite alternate;
+}
+
+@keyframes parpadeo-fondo {
+  0% { background-color: #000; }
+  50% { background-color: #ff0000; }
+  100% { background-color: #000; }
+}
+
+@keyframes distorsion-texto {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(5px) rotate(1deg); }
+  100% { transform: translateX(-5px) rotate(-1deg); }
+}
+
+.glitch-activated .glitch-nav a,
+.glitch-activated .btn-legit {
+  position: relative;
+  animation: mover-btns 0.4s infinite alternate;
+}
+
+@keyframes mover-btns {
+  0%   { top: 0; left: 0; }
+  25%  { top: -3px; left: 2px; }
+  50%  { top: 2px; left: -2px; }
+  75%  { top: 1px; left: 3px; }
+  100% { top: -2px; left: -3px; }
+}
+
+/* ⚡💀 LUCES ESTROBOSCÓPICAS CUANDO SE ACTIVA EL GLITCH */
+body.glitch-activated {
+  animation: estrobos 0.08s infinite alternate;
+}
+
+@keyframes estrobos {
+  10%  { background-color: #ff0000; }
+  100% { background-color: #ff00aa; }
+  20%  { background-color: #ffffff; }
+  40%  { background-color: #000000; }
+  60%  { background-color: #ff00ff; }
+  80%  { background-color: #fbff00; }
+  100% { background-color: #09ff00; }
+}
+body.glitch-activated * {
+  animation: ultra-glitch 0.2s steps(2, end) infinite;
+}

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>.</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'EB Garamond', serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      padding: 1rem;
+      overflow: hidden;
+      transition: background 0.3s ease;
+    }
+
+    .glitched {
+      animation: glitch-fondo 0.15s steps(2, end) infinite;
+      color: #ff3333 !important;
+      text-shadow: 0 0 5px red, 0 0 2px white;
+    }
+
+    @keyframes glitch-fondo {
+      0% { background-color: #0a0a0a; }
+      50% { background-color: #000000; }
+      100% { background-color: #000000; }
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .ecuacion {
+      font-size: 1.5rem;
+      background-color: #111;
+      padding: 1rem 2rem;
+      border: 2px dashed #444;
+      margin-bottom: 2rem;
+      box-shadow: 0 0 8px #000000;
+    }
+
+    input[type="text"] {
+      font-size: 1.2rem;
+      padding: 0.5rem;
+      border: none;
+      border-bottom: 2px solid #000000;
+      background: transparent;
+      color: #fff;
+      outline: none;
+      text-align: center;
+    }
+
+    .acceso, .fallo, .bloqueado {
+      display: none;
+      margin-top: 2rem;
+    }
+
+    .btn-legit {
+      font-size: 1.1rem;
+      padding: 0.7rem 1.5rem;
+      color: black;
+      background-color: rgb(30, 255, 0);
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 0 10px rgba(0, 255, 64, 0.6);
+    }
+
+    .btn-legit:hover {
+      background-color: #00cc33;
+    }
+
+    .fallo {
+      color: #ff4444;
+      text-shadow: 0 0 4px red;
+      animation: glitch-fondo 0.3s steps(2, end) infinite;
+    }
+
+    .bloqueado {
+      color: crimson;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>.</h1>
+
+  <div class="ecuacion">
+    2+4+5+9x8+6-9x8+5+2=????
+  </div>
+
+  <input type="text" id="respuesta" placeholder="Ingresa el resultado">
+<button id="verificar" class="btn-legit">𓂏</button>
+
+
+  <div class="acceso" id="acceso">
+    <p>Cernis per nomen tuum?</p>
+    <a href="luxu-blog01.html" class="btn-legit">I see everything.</a>
+  </div>
+
+  <div class="fallo" id="fallo">
+    No.
+  </div>
+
+  <div class="bloqueado" id="bloqueado">
+    त्वं कृपणः असि
+  </div>
+
+  <script>
+  const input = document.getElementById("respuesta");
+const verificar = document.getElementById("verificar");
+const acceso = document.getElementById("acceso");
+const fallo = document.getElementById("fallo");
+const bloqueado = document.getElementById("bloqueado");
+let intentos = 0;
+
+verificar.addEventListener("click", () => {
+  const valor = input.value.trim();
+  const sonidoError = document.getElementById("sonidoError");
+  const sonidoCorrecto = document.getElementById("sonidoCorrecto");
+
+  if (valor === "24") {
+    acceso.style.display = "block";
+    fallo.style.display = "none";
+    bloqueado.style.display = "none";
+    document.body.classList.remove("glitched");
+    input.disabled = true;
+    verificar.disabled = true;
+
+    // ✅ Sonido mágico de runa desbloqueada
+    sonidoCorrecto.currentTime = 0;
+    sonidoCorrecto.play();
+  } else {
+    intentos++;
+
+    if (intentos >= 3) {
+      input.disabled = true;
+      verificar.disabled = true;
+      bloqueado.style.display = "block";
+      fallo.style.display = "none";
+      document.body.classList.add("glitched");
+    } else {
+      fallo.style.display = "block";
+      document.body.classList.add("glitched");
+
+      // 💥 SONIDO DE ERROR
+      sonidoError.currentTime = 0; // reinicia si ya había sonado
+      sonidoError.play();
+
+      setTimeout(() => {
+        document.body.classList.remove("glitched");
+        fallo.style.display = "none";
+      }, 1500);
+    }
+  }
+});
+
+  </script>
+<audio id="sonidoError" src="audio/error-glitch.mp3"></audio>
+<audio id="sonidoCorrecto" src="audio/correct-answer.mp3"></audio>
+</body>
+</html>

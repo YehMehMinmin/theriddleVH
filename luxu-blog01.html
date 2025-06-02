@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>10+2=????</title>
+  <link rel="stylesheet" href="styleluxublog2.css">
+</head>
+<body>
+  <main class="registro">
+    <h1>I CAN HEAR YOU FROM THE AVERNO · YOUR VOICE IS REGISTERED IN TEXT</h1>
+
+    <p><strong>Elijah:</strong> Entonces sólo tú tienes que recogerlas?</p>
+    <p><strong>Luxu:</strong> M-me parece.</p>
+    <p><strong>Stellrinu:</strong> En el nombre del ᚪᛚᚠᚪᛚᛞᚱ. Desaparece ante nuestro tacto, más no... </p>
+    <p><strong>Elijah:</strong> ... Al tuyo. ¿Tienes algo que ver con esto?</p>
+    <p><strong>Luxu:</strong> Uh, no. Pero- pero se mehace t-tan conocido que no m-me deja en paz.</p>
+    <p id="frase-final" class="frase-final">[ hatr hatr hatr ]</p>
+
+    <!-- Frase glitch que aparece después -->
+    <div id="glitch-dialogo" class="mensaje-glitch" style="display: none;">
+      <p>«Siento que hay algo más...»</p>
+      <p>«Me siento observado.»</p>
+      <p style="transform: scaleX(-1); color: red;">भवन्तः पश्चातापं करिष्यन्ति</p>
+      <a id="acertijo-boton" href="acertijo-02.html" class="btn-legit grande">🌼</a>
+    </div>
+  </main>
+
+  <!-- AUDIO -->
+  <audio id="glitchAudio" src="audio/dies-irae-1st-intensity.mp3"></audio>
+
+  <!-- CRUCES GLITCHEADAS -->
+  <div id="crucesMalditas" class="cruces-invocadas" style="display: none;">✝ ✝ ✝ ✝ ✝ ✝</div>
+
+  <!-- SCRIPT EXTERNO FUNCIONAL -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const fraseFinal = document.getElementById("frase-final");
+      const glitchDialogo = document.getElementById("glitch-dialogo");
+      const boton = document.getElementById("acertijo-boton");
+      const glitchAudio = document.getElementById("glitchAudio");
+      const crucifix = document.getElementById("crucesMalditas");
+
+      const activarGlitch = () => {
+        document.body.classList.add("glitch-activated", "glitch-diesirae");
+        glitchDialogo.style.display = "block";
+        boton.style.display = "block";
+        crucifix.style.display = "block";
+
+        glitchAudio.currentTime = 0;
+        glitchAudio.play().catch(e => console.error("NO SE PUDO REPRODUCIR EL AUDIO:", e));
+
+        setTimeout(() => {
+          document.body.classList.remove("glitch-diesirae");
+          crucifix.style.display = "none";
+        }, 6000);
+      };
+
+      if (fraseFinal) {
+        fraseFinal.addEventListener("click", activarGlitch);
+      }
+    });
+  </script>
+</body>
+</html>

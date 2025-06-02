@@ -107,45 +107,46 @@
   <!-- AUDIO -->
   <audio id="audioExito" src="audio/o-fortuna-letter-A.mp3" preload="auto"></audio>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const letras = document.querySelectorAll("#letras span");
-      const mensaje = document.getElementById("bloqueado");
-      const boton = document.getElementById("acertijo-boton");
-      const clave = document.getElementById("clave");
-      const audioExito = document.getElementById("audioExito");
+ <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const letras = document.querySelectorAll("#letras span");
+    const mensaje = document.getElementById("bloqueado");
+    const boton = document.getElementById("acertijo-boton");
+    const clave = document.getElementById("clave");
+    const audioExito = document.getElementById("audioExito");
 
-      letras.forEach(letra => {
-        letra.addEventListener("click", () => {
-          const seleccion = letra.getAttribute("data-index");
+    letras.forEach(letra => {
+      letra.addEventListener("click", () => {
+        const seleccion = letra.getAttribute("data-index");
 
-          if (seleccion === "5") {
-            // ✅ ÉXITO
-            boton.style.display = "inline-block";
-            letras.forEach(l => l.style.pointerEvents = "none");
-            clave.classList.add("exitoVisual");
+        if (seleccion === "5") {
+          // ✅ ÉXITO
+          boton.style.display = "inline-block";
+          letras.forEach(l => l.style.pointerEvents = "none");
+          clave.classList.add("exitoVisual");
 
-            try {
-              audioExito.currentTime = 0;
-              audioExito.play().then(() => {
-                console.log("🎶 Sonido de éxito reproducido.");
-              }).catch(e => {
-                console.warn("⚠️ No se pudo reproducir el audio:", e);
-              });
-            } catch (e) {
-              console.warn("⚠️ Audio no compatible o bloqueado:", e);
-            }
-
-          } else {
-            // ❌ FALLO
-            clave.textContent = "Ν⨷";
-            mensaje.style.display = "block";
-            letras.forEach(l => l.style.pointerEvents = "none");
+          try {
+            audioExito.currentTime = 0;
+            audioExito.play().then(() => {
+              console.log("🎶 Sonido de éxito reproducido.");
+            }).catch(e => {
+              console.warn("⚠️ No se pudo reproducir el audio:", e);
+            });
+          } catch (e) {
+            console.warn("⚠️ Audio no compatible o bloqueado:", e);
           }
-        });
+
+        } else {
+          // ❌ FALLO
+          clave.textContent = "Ν⨷";
+          mensaje.style.display = "block";
+          letras.forEach(l => l.style.pointerEvents = "none");
+        }
       });
     });
-  </script>
+  });
+</script>
+
 
 </body>
 </html>
